@@ -1,0 +1,52 @@
+\hypertarget{os_8h_source}{}\doxysection{os.\+h}
+\mbox{\hyperlink{os_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef OS\_H}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define OS\_H}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdio.h>}            \textcolor{comment}{// For NULL}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <avr/io.h>}           \textcolor{comment}{// Standard AVR IO Library}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <util/delay.h>}       \textcolor{comment}{// Standard AVR Delay Library}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <stdint.h>}           \textcolor{comment}{// For standard data types}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <avr/interrupt.h>}    \textcolor{comment}{// Standard AVR Interrupt Library}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define NUMBER\_OF\_TASKS     10}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define READY     0}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define RUNNING   1}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define SLEEPING  2}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define PENDING   0}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define DONE      1}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} uint8\_t  \mbox{\hyperlink{os_8h_a1a6a83370c81dbf9da1ef7043d0609a7}{os\_sFlag}};      }
+\DoxyCodeLine{29 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} uint32\_t  \mbox{\hyperlink{os_8h_af67aab507a504eb1ede7ce8cd88197ed}{os\_ticks}};     }
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{extern} void (*\mbox{\hyperlink{os_8h_ae075c6901463925f1ac1ef2dad5e667c}{arr\_ready\_tasks}}[NUMBER\_OF\_TASKS])(\textcolor{keywordtype}{void} *p);   }
+\DoxyCodeLine{32 \textcolor{keyword}{extern} uint8\_t \mbox{\hyperlink{os_8h_a3fca70238a777f7d4b2ea848a10c70a1}{arr\_task\_state}}[NUMBER\_OF\_TASKS];             }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{extern} uint8\_t \mbox{\hyperlink{os_8h_aeb7940dc1b6c302a9013e0931d94ae9c}{arr\_task\_sleep\_start\_flag}}[NUMBER\_OF\_TASKS];  }
+\DoxyCodeLine{35 \textcolor{keyword}{extern} int32\_t \mbox{\hyperlink{os_8h_a1dcc11cf0725258c3af40a63a7d91bb5}{arr\_task\_sleep\_remaining}}[NUMBER\_OF\_TASKS];   }
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{42 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a793243131aeeb9ec291468b450153afc}{init\_timer2}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 }
+\DoxyCodeLine{49 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a6cc2e63d83267ff5059bf0a76b302a09}{os\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{57 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a64ca823d60335b83f74cc28378018058}{os\_start\_task}}(\textcolor{keywordtype}{void} (*ptr\_fn)());}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 }
+\DoxyCodeLine{66 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_ab93fff6139a40309204c3f4d9a05385f}{os\_delay}}(int32\_t delay\_ms);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 }
+\DoxyCodeLine{77 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_ad89e53bc232b85604368e45d2469784f}{os\_scheduler\_sync}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 }
+\DoxyCodeLine{86 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a3fc86ed91990cc04813ff7823fb4ffcd}{os\_scheduler}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

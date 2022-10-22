@@ -1,0 +1,234 @@
+\hypertarget{task3_8cpp}{}\doxysection{task3.\+cpp File Reference}
+\label{task3_8cpp}\index{task3.cpp@{task3.cpp}}
+
+
+Task3 driver code.  
+
+
+{\ttfamily \#include \char`\"{}task3.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{task3_8cpp_ae7727c77457c60aa5d9e461e8c937fb9}{pin\+\_\+write\+\_\+0}} (int pin\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Make the given GPIO pin LOW. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a249f4ac7127b7f2daf72c7a7eac3d549}{pin\+\_\+write\+\_\+1}} (int pin\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Make the given GPIO pin HIGH. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a6b235a86ed75ecb307173a512efed615}{pin\+\_\+write\+\_\+mode\+\_\+0}} (int pin\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Make the given GPIO pin OUTPUT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a1ec60032c5a8dd3b2def3de8ddc93bfa}{pin\+\_\+write\+\_\+mode\+\_\+1}} (int pin\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Make the given GPIO pin INPUT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a71491ad2b3fb251530d374b7ad8db7bd}{pin\+\_\+write}} (int pin\+\_\+num, int data)
+\begin{DoxyCompactList}\small\item\em Make the given GPIO pin either HIGH or LOW. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a81a44ef1f41b62e3c1baef2fad2e6495}{pin\+\_\+mode}} (int pin\+\_\+num, int data)
+\begin{DoxyCompactList}\small\item\em Make the given GPIO pin either OUTPUT or INPUT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{task3_8cpp_af06312a041267ec760a11b17418fe1c5}\label{task3_8cpp_af06312a041267ec760a11b17418fe1c5}} 
+void {\bfseries seven\+\_\+seg\+\_\+counter\+\_\+increment} ()
+\begin{DoxyCompactList}\small\item\em Increments the global variable counter value by 1. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{task3_8cpp_a8546378e225ae2fe221f491e0d136d53}{seven\+\_\+seg\+\_\+num\+\_\+digits}} ()
+\begin{DoxyCompactList}\small\item\em Counts number of digits in the global variable counter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{task3_8cpp_a93f1323944faab60bffcb446ca6b4213}\label{task3_8cpp_a93f1323944faab60bffcb446ca6b4213}} 
+void {\bfseries seven\+\_\+seg\+\_\+update\+\_\+digits\+\_\+arr} ()
+\begin{DoxyCompactList}\small\item\em Splits the counter value into individual digits and stores in the global array. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{task3_8cpp_a6999bc6e1b15d39d5c8985ad66f21832}\label{task3_8cpp_a6999bc6e1b15d39d5c8985ad66f21832}} 
+void {\bfseries seven\+\_\+seg\+\_\+clear\+\_\+leds} ()
+\begin{DoxyCompactList}\small\item\em Turn offs the LEDs of the selected 7-\/segment display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a9237c9c7912e7890fa19a12913766a32}{seven\+\_\+seg\+\_\+display\+\_\+num}} (int curr\+\_\+digit)
+\begin{DoxyCompactList}\small\item\em Displays the number passed to the function on the selected 7-\/segment display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a49a055fb5e201b1a7357db419b76a6a8}{seven\+\_\+seg\+\_\+pick\+\_\+digit}} (int x)
+\begin{DoxyCompactList}\small\item\em Selects one of the 7-\/segment on a 4-\/digit 7-\/segment display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a78c23d4e148b82a519d736332991c1d4}{seven\+\_\+seg\+\_\+unpick\+\_\+digit}} (int x)
+\begin{DoxyCompactList}\small\item\em Unselects one of the 7-\/segment on a 4-\/digit 7-\/segment display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8cpp_a9a1819f61b1e60d524cf9f773f779fc4}{seven\+\_\+seg\+\_\+display}} (int place, int curr\+\_\+digit)
+\begin{DoxyCompactList}\small\item\em Displays a given digit at a given place on a 4-\/digit 7-\/segment display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{task3_8cpp_a3b72824c7a8d4ea7c0b45bc1eeadde72}\label{task3_8cpp_a3b72824c7a8d4ea7c0b45bc1eeadde72}} 
+void {\bfseries init\+\_\+task3} ()
+\begin{DoxyCompactList}\small\item\em Initialized the 4-\/digit 7-\/segment display for Task-\/3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{task3_8cpp_a800ed86ba3f4e578d81215c99b2ad914}\label{task3_8cpp_a800ed86ba3f4e578d81215c99b2ad914}} 
+void {\bfseries task3} (void)
+\begin{DoxyCompactList}\small\item\em Task-\/3. Makes the 4-\/digit 7-\/segment display count up by 1 unit every 100 ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Task3 driver code. 
+
+\begin{DoxyAuthor}{Author}
+Sourav Jena, Yi Chen 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/05-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{task3_8cpp_a81a44ef1f41b62e3c1baef2fad2e6495}\label{task3_8cpp_a81a44ef1f41b62e3c1baef2fad2e6495}} 
+\index{task3.cpp@{task3.cpp}!pin\_mode@{pin\_mode}}
+\index{pin\_mode@{pin\_mode}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{pin\_mode()}{pin\_mode()}}
+{\footnotesize\ttfamily void pin\+\_\+mode (\begin{DoxyParamCaption}\item[{int}]{pin\+\_\+num,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+
+
+Make the given GPIO pin either OUTPUT or INPUT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+\_\+num} & Pin number as on Arduino Board \\
+\hline
+{\em data} & OUTPUT or INPUT \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_a71491ad2b3fb251530d374b7ad8db7bd}\label{task3_8cpp_a71491ad2b3fb251530d374b7ad8db7bd}} 
+\index{task3.cpp@{task3.cpp}!pin\_write@{pin\_write}}
+\index{pin\_write@{pin\_write}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{pin\_write()}{pin\_write()}}
+{\footnotesize\ttfamily void pin\+\_\+write (\begin{DoxyParamCaption}\item[{int}]{pin\+\_\+num,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+
+
+Make the given GPIO pin either HIGH or LOW. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+\_\+num} & Pin number as on Arduino Board \\
+\hline
+{\em data} & HIGH or LOW \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_ae7727c77457c60aa5d9e461e8c937fb9}\label{task3_8cpp_ae7727c77457c60aa5d9e461e8c937fb9}} 
+\index{task3.cpp@{task3.cpp}!pin\_write\_0@{pin\_write\_0}}
+\index{pin\_write\_0@{pin\_write\_0}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{pin\_write\_0()}{pin\_write\_0()}}
+{\footnotesize\ttfamily void pin\+\_\+write\+\_\+0 (\begin{DoxyParamCaption}\item[{int}]{pin\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Make the given GPIO pin LOW. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+\_\+num} & Pin number as on Arduino Board \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_a249f4ac7127b7f2daf72c7a7eac3d549}\label{task3_8cpp_a249f4ac7127b7f2daf72c7a7eac3d549}} 
+\index{task3.cpp@{task3.cpp}!pin\_write\_1@{pin\_write\_1}}
+\index{pin\_write\_1@{pin\_write\_1}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{pin\_write\_1()}{pin\_write\_1()}}
+{\footnotesize\ttfamily void pin\+\_\+write\+\_\+1 (\begin{DoxyParamCaption}\item[{int}]{pin\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Make the given GPIO pin HIGH. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+\_\+num} & Pin number as on Arduino Board \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_a6b235a86ed75ecb307173a512efed615}\label{task3_8cpp_a6b235a86ed75ecb307173a512efed615}} 
+\index{task3.cpp@{task3.cpp}!pin\_write\_mode\_0@{pin\_write\_mode\_0}}
+\index{pin\_write\_mode\_0@{pin\_write\_mode\_0}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{pin\_write\_mode\_0()}{pin\_write\_mode\_0()}}
+{\footnotesize\ttfamily void pin\+\_\+write\+\_\+mode\+\_\+0 (\begin{DoxyParamCaption}\item[{int}]{pin\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Make the given GPIO pin OUTPUT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+\_\+num} & Pin number as on Arduino Board \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_a1ec60032c5a8dd3b2def3de8ddc93bfa}\label{task3_8cpp_a1ec60032c5a8dd3b2def3de8ddc93bfa}} 
+\index{task3.cpp@{task3.cpp}!pin\_write\_mode\_1@{pin\_write\_mode\_1}}
+\index{pin\_write\_mode\_1@{pin\_write\_mode\_1}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{pin\_write\_mode\_1()}{pin\_write\_mode\_1()}}
+{\footnotesize\ttfamily void pin\+\_\+write\+\_\+mode\+\_\+1 (\begin{DoxyParamCaption}\item[{int}]{pin\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Make the given GPIO pin INPUT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+\_\+num} & Pin number as on Arduino Board \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_a9a1819f61b1e60d524cf9f773f779fc4}\label{task3_8cpp_a9a1819f61b1e60d524cf9f773f779fc4}} 
+\index{task3.cpp@{task3.cpp}!seven\_seg\_display@{seven\_seg\_display}}
+\index{seven\_seg\_display@{seven\_seg\_display}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{seven\_seg\_display()}{seven\_seg\_display()}}
+{\footnotesize\ttfamily void seven\+\_\+seg\+\_\+display (\begin{DoxyParamCaption}\item[{int}]{place,  }\item[{int}]{curr\+\_\+digit }\end{DoxyParamCaption})}
+
+
+
+Displays a given digit at a given place on a 4-\/digit 7-\/segment display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em place} & The place at which we want the digit to be displayed. \\
+\hline
+{\em curr\+\_\+digit} & The digit to be displayed at the given place. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_a9237c9c7912e7890fa19a12913766a32}\label{task3_8cpp_a9237c9c7912e7890fa19a12913766a32}} 
+\index{task3.cpp@{task3.cpp}!seven\_seg\_display\_num@{seven\_seg\_display\_num}}
+\index{seven\_seg\_display\_num@{seven\_seg\_display\_num}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{seven\_seg\_display\_num()}{seven\_seg\_display\_num()}}
+{\footnotesize\ttfamily void seven\+\_\+seg\+\_\+display\+\_\+num (\begin{DoxyParamCaption}\item[{int}]{curr\+\_\+digit }\end{DoxyParamCaption})}
+
+
+
+Displays the number passed to the function on the selected 7-\/segment display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+digit} & Number to be displayed on the 7-\/segment. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_a8546378e225ae2fe221f491e0d136d53}\label{task3_8cpp_a8546378e225ae2fe221f491e0d136d53}} 
+\index{task3.cpp@{task3.cpp}!seven\_seg\_num\_digits@{seven\_seg\_num\_digits}}
+\index{seven\_seg\_num\_digits@{seven\_seg\_num\_digits}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{seven\_seg\_num\_digits()}{seven\_seg\_num\_digits()}}
+{\footnotesize\ttfamily int seven\+\_\+seg\+\_\+num\+\_\+digits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Counts number of digits in the global variable counter. 
+
+\begin{DoxyReturn}{Returns}
+int Number of digits in the value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{task3_8cpp_a49a055fb5e201b1a7357db419b76a6a8}\label{task3_8cpp_a49a055fb5e201b1a7357db419b76a6a8}} 
+\index{task3.cpp@{task3.cpp}!seven\_seg\_pick\_digit@{seven\_seg\_pick\_digit}}
+\index{seven\_seg\_pick\_digit@{seven\_seg\_pick\_digit}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{seven\_seg\_pick\_digit()}{seven\_seg\_pick\_digit()}}
+{\footnotesize\ttfamily void seven\+\_\+seg\+\_\+pick\+\_\+digit (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Selects one of the 7-\/segment on a 4-\/digit 7-\/segment display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The place of the 7-\/segment to be selected. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{task3_8cpp_a78c23d4e148b82a519d736332991c1d4}\label{task3_8cpp_a78c23d4e148b82a519d736332991c1d4}} 
+\index{task3.cpp@{task3.cpp}!seven\_seg\_unpick\_digit@{seven\_seg\_unpick\_digit}}
+\index{seven\_seg\_unpick\_digit@{seven\_seg\_unpick\_digit}!task3.cpp@{task3.cpp}}
+\doxysubsubsection{\texorpdfstring{seven\_seg\_unpick\_digit()}{seven\_seg\_unpick\_digit()}}
+{\footnotesize\ttfamily void seven\+\_\+seg\+\_\+unpick\+\_\+digit (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Unselects one of the 7-\/segment on a 4-\/digit 7-\/segment display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The place of the 7-\/segment to be un-\/selected. \\
+\hline
+\end{DoxyParams}

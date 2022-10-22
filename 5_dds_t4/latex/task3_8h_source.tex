@@ -1,0 +1,76 @@
+\hypertarget{task3_8h_source}{}\doxysection{task3.\+h}
+\mbox{\hyperlink{task3_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef TASK3\_H}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define TASK3\_H}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <avr/io.h>}            \textcolor{comment}{// Standard AVR IO Library}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{os_8h}{os.h}}"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define OUTPUT 1}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define INPUT  0}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define HIGH   1}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define LOW    0}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define BIT\_SET(PORT, BIT)          (PORT |= (1 << BIT))      }\textcolor{comment}{// Macro function for setting one bit}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define BIT\_CLR(PORT, BIT)          (PORT \&= \string~(1 << BIT))     }\textcolor{comment}{// Macro function for clearing one bit}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} seven\_seg\_digits\_freq[6][3];     \textcolor{comment}{// Array to hold digits of Frequencies}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_ae7727c77457c60aa5d9e461e8c937fb9}{pin\_write\_0}}(\textcolor{keywordtype}{int} pin\_num);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{41 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a249f4ac7127b7f2daf72c7a7eac3d549}{pin\_write\_1}}(\textcolor{keywordtype}{int} pin\_num);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{48 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a6b235a86ed75ecb307173a512efed615}{pin\_write\_mode\_0}}(\textcolor{keywordtype}{int} pin\_num);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 }
+\DoxyCodeLine{56 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a1ec60032c5a8dd3b2def3de8ddc93bfa}{pin\_write\_mode\_1}}(\textcolor{keywordtype}{int} pin\_num);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 }
+\DoxyCodeLine{65 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a71491ad2b3fb251530d374b7ad8db7bd}{pin\_write}}(\textcolor{keywordtype}{int} pin\_num, \textcolor{keywordtype}{int} data);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 }
+\DoxyCodeLine{74 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a81a44ef1f41b62e3c1baef2fad2e6495}{pin\_mode}}(\textcolor{keywordtype}{int} pin\_num, \textcolor{keywordtype}{int} data);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 }
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_af06312a041267ec760a11b17418fe1c5}{seven\_seg\_counter\_increment}}();}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 }
+\DoxyCodeLine{89 \textcolor{keywordtype}{int} \mbox{\hyperlink{task3_8h_a8546378e225ae2fe221f491e0d136d53}{seven\_seg\_num\_digits}}();}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 }
+\DoxyCodeLine{96 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a93f1323944faab60bffcb446ca6b4213}{seven\_seg\_update\_digits\_arr}}();}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 }
+\DoxyCodeLine{103 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a6999bc6e1b15d39d5c8985ad66f21832}{seven\_seg\_clear\_leds}}();}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 }
+\DoxyCodeLine{112 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a9237c9c7912e7890fa19a12913766a32}{seven\_seg\_display\_num}}(\textcolor{keywordtype}{int} curr\_digit);}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 }
+\DoxyCodeLine{120 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a49a055fb5e201b1a7357db419b76a6a8}{seven\_seg\_pick\_digit}}(\textcolor{keywordtype}{int} x);}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 }
+\DoxyCodeLine{128 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a78c23d4e148b82a519d736332991c1d4}{seven\_seg\_unpick\_digit}}(\textcolor{keywordtype}{int} x);}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130 }
+\DoxyCodeLine{137 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a9a1819f61b1e60d524cf9f773f779fc4}{seven\_seg\_display}}(\textcolor{keywordtype}{int} place, \textcolor{keywordtype}{int} curr\_digit);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 }
+\DoxyCodeLine{144 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a73db7c86d1d10a731ec268d45318b984}{seven\_seg\_clear\_everything}}();}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 }
+\DoxyCodeLine{151 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a3b72824c7a8d4ea7c0b45bc1eeadde72}{init\_task3}}();}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 }
+\DoxyCodeLine{158 \textcolor{keywordtype}{void} \mbox{\hyperlink{task3_8h_a800ed86ba3f4e578d81215c99b2ad914}{task3}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

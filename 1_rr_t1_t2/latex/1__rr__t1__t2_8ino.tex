@@ -1,0 +1,143 @@
+\hypertarget{1__rr__t1__t2_8ino}{}\doxysection{1\+\_\+rr\+\_\+t1\+\_\+t2.\+ino File Reference}
+\label{1__rr__t1__t2_8ino}\index{1\_rr\_t1\_t2.ino@{1\_rr\_t1\_t2.ino}}
+
+
+main file for the RR Scheduler running Task-\/1 and Task-\/2 of Lab-\/3  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_ab5e66c714c5c4fc72bebb6aee3da7be7}\label{1__rr__t1__t2_8ino_ab5e66c714c5c4fc72bebb6aee3da7be7}} 
+\#define {\bfseries DDR\+\_\+\+LED}~DDRL
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_ad749b15dc3958f6b4a88a969e2a2ca9d}\label{1__rr__t1__t2_8ino_ad749b15dc3958f6b4a88a969e2a2ca9d}} 
+\#define {\bfseries PORT\+\_\+\+LED}~PORTL
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_ab9824ab080c30006c1baaa0dd7e863c5}\label{1__rr__t1__t2_8ino_ab9824ab080c30006c1baaa0dd7e863c5}} 
+\#define {\bfseries LED\+\_\+\+RED\+\_\+\+PIN}~PL0
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a5b2ee3c898eee4b41ac1fd79a8526446}\label{1__rr__t1__t2_8ino_a5b2ee3c898eee4b41ac1fd79a8526446}} 
+\#define {\bfseries DELAY\+\_\+\+MS\+\_\+\+ON}~250
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a27b457c1fef62e5820638049ba14fce7}\label{1__rr__t1__t2_8ino_a27b457c1fef62e5820638049ba14fce7}} 
+\#define {\bfseries DELAY\+\_\+\+MS\+\_\+\+OFF}~750
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_aa4e5c6f3e8f5c61e20cc3a60c72b7eb4}\label{1__rr__t1__t2_8ino_aa4e5c6f3e8f5c61e20cc3a60c72b7eb4}} 
+\#define {\bfseries DDR\+\_\+\+SPEAKER}~DDRH
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a6d70f18143765fe064150d1a21884f88}\label{1__rr__t1__t2_8ino_a6d70f18143765fe064150d1a21884f88}} 
+\#define {\bfseries PORT\+\_\+\+SPEAKER}~PORTH
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a40a8044a70c2ac07d2456f23bd4522a3}\label{1__rr__t1__t2_8ino_a40a8044a70c2ac07d2456f23bd4522a3}} 
+\#define {\bfseries PIN\+\_\+\+SPEAKER}~PH3
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a17dceaa32bef077e01b9e51c2d3d1d82}\label{1__rr__t1__t2_8ino_a17dceaa32bef077e01b9e51c2d3d1d82}} 
+\#define {\bfseries TIMER4\+\_\+\+POWER\+\_\+\+REG}~PRR1
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a3db165c7284863dc58c9e915117157bf}\label{1__rr__t1__t2_8ino_a3db165c7284863dc58c9e915117157bf}} 
+\#define {\bfseries TIMER4\+\_\+\+CONTROL\+\_\+\+REG\+\_\+A}~TCCR4A
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_af3812e44c3a5217ea45b75331453c6c3}\label{1__rr__t1__t2_8ino_af3812e44c3a5217ea45b75331453c6c3}} 
+\#define {\bfseries TIMER4\+\_\+\+CONTROL\+\_\+\+REG\+\_\+B}~TCCR4B
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a76e000aa992503cce504e8ce2cdc760b}\label{1__rr__t1__t2_8ino_a76e000aa992503cce504e8ce2cdc760b}} 
+\#define {\bfseries TIMER4\+\_\+\+COUNT\+\_\+\+REG}~TCNT4
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a02983181582d8d04db21cf831522a493}\label{1__rr__t1__t2_8ino_a02983181582d8d04db21cf831522a493}} 
+\#define {\bfseries TIMER4\+\_\+\+OUTPUT\+\_\+\+COMPARE\+\_\+\+REG}~OCR4A
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a6416e086f3ad1d77c3ded462dd4f2bd2}\label{1__rr__t1__t2_8ino_a6416e086f3ad1d77c3ded462dd4f2bd2}} 
+\#define {\bfseries BIT\+\_\+\+SET}(PORT,  BIT)~(PORT $\vert$= (1 $<$$<$ BIT))
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_aef19281a1305705a857becf617cb162c}\label{1__rr__t1__t2_8ino_aef19281a1305705a857becf617cb162c}} 
+\#define {\bfseries BIT\+\_\+\+CLR}(PORT,  BIT)~(PORT \&= $\sim$(1 $<$$<$ BIT))
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a7f2194cd5616dde22c03f163b7bdbe42}\label{1__rr__t1__t2_8ino_a7f2194cd5616dde22c03f163b7bdbe42}} 
+\#define {\bfseries HZ\+\_\+293}~107
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_afbdd153b05928d7ab85ff3ed3d0d8629}\label{1__rr__t1__t2_8ino_afbdd153b05928d7ab85ff3ed3d0d8629}} 
+\#define {\bfseries HZ\+\_\+329}~95
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_aa8f8fb1000853709c56917273b1f7fae}\label{1__rr__t1__t2_8ino_aa8f8fb1000853709c56917273b1f7fae}} 
+\#define {\bfseries HZ\+\_\+261}~119
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a80e68e55961793b59383d77dbb66f1f4}\label{1__rr__t1__t2_8ino_a80e68e55961793b59383d77dbb66f1f4}} 
+\#define {\bfseries HZ\+\_\+130}~481
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_aa9ca9ef8f4829d4045ba6862284d60b9}\label{1__rr__t1__t2_8ino_aa9ca9ef8f4829d4045ba6862284d60b9}} 
+\#define {\bfseries HZ\+\_\+196}~319
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a9e794239f813a151405a1600d5c0e1e1}\label{1__rr__t1__t2_8ino_a9e794239f813a151405a1600d5c0e1e1}} 
+\#define {\bfseries HZ\+\_\+400}~78
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a95be9ae4620cffcf1ad34fb27bb72ce8}\label{1__rr__t1__t2_8ino_a95be9ae4620cffcf1ad34fb27bb72ce8}} 
+\#define {\bfseries HZ\+\_\+250}~125
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_af0d5c94dabd3041acee5073cdf8a5165}\label{1__rr__t1__t2_8ino_af0d5c94dabd3041acee5073cdf8a5165}} 
+\#define {\bfseries HZ\+\_\+800}~39
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a999b6520220deca0062058f7c40911dd}\label{1__rr__t1__t2_8ino_a999b6520220deca0062058f7c40911dd}} 
+\#define {\bfseries SILENCE\+\_\+1S}~62500
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a7b3b624857fba1776c75412289a20230}\label{1__rr__t1__t2_8ino_a7b3b624857fba1776c75412289a20230}} 
+void {\bfseries led\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initializes LED GPIO Pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_ad6f6083af3526114311748a49640254f}\label{1__rr__t1__t2_8ino_ad6f6083af3526114311748a49640254f}} 
+void {\bfseries led\+\_\+red\+\_\+off} ()
+\begin{DoxyCompactList}\small\item\em Turn OFF the LED. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_aa08e5b078986d56dfbad555f2fa6fd57}\label{1__rr__t1__t2_8ino_aa08e5b078986d56dfbad555f2fa6fd57}} 
+void {\bfseries led\+\_\+red\+\_\+on} ()
+\begin{DoxyCompactList}\small\item\em Turns ON the LED. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a7def3932c73c2d20c5c7b81ac8a03f2d}\label{1__rr__t1__t2_8ino_a7def3932c73c2d20c5c7b81ac8a03f2d}} 
+void {\bfseries timer4\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initializes Timer-\/4 to toggle the speaker pin when the timer overflows. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_afde07648040c326129670547738a0c86}\label{1__rr__t1__t2_8ino_afde07648040c326129670547738a0c86}} 
+void {\bfseries task1} ()
+\begin{DoxyCompactList}\small\item\em Task to turn on the LED for 250 ms and off for 750 ms. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_ac06840b5fb606b0965b4760d28b82094}\label{1__rr__t1__t2_8ino_ac06840b5fb606b0965b4760d28b82094}} 
+int {\bfseries task2} ()
+\begin{DoxyCompactList}\small\item\em Play the \char`\"{}\+Close Encounter\char`\"{} tune then pause for 4 seconds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{1__rr__t1__t2_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+void {\bfseries setup} ()
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_afe461d27b9c48d5921c00d521181f12f}\label{1__rr__t1__t2_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+void {\bfseries loop} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_adbaa1ab8425f0835d15f0968130c0a0c}\label{1__rr__t1__t2_8ino_adbaa1ab8425f0835d15f0968130c0a0c}} 
+uint32\+\_\+t {\bfseries time\+\_\+curr} = 0
+\begin{DoxyCompactList}\small\item\em Holds current time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a30c1d524f13e7a3a324af417f621bc2e}\label{1__rr__t1__t2_8ino_a30c1d524f13e7a3a324af417f621bc2e}} 
+uint32\+\_\+t {\bfseries led\+\_\+time\+\_\+old} = 0
+\begin{DoxyCompactList}\small\item\em Holds old time for the LED task. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_af7abb96df55c6ddd9743bc2661a205ef}\label{1__rr__t1__t2_8ino_af7abb96df55c6ddd9743bc2661a205ef}} 
+uint32\+\_\+t {\bfseries speaker\+\_\+time\+\_\+old} = 0
+\begin{DoxyCompactList}\small\item\em Holds old time for the Speaker task. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_abb36d52663816370f5473568607b94fe}\label{1__rr__t1__t2_8ino_abb36d52663816370f5473568607b94fe}} 
+uint32\+\_\+t {\bfseries global\+\_\+ticks} = 0
+\begin{DoxyCompactList}\small\item\em Holds index of the current note being played. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{1__rr__t1__t2_8ino_a95dea44d6be424cdf0deb70ee1814c6f}\label{1__rr__t1__t2_8ino_a95dea44d6be424cdf0deb70ee1814c6f}} 
+uint32\+\_\+t {\bfseries arr\+\_\+notes} \mbox{[}$\,$\mbox{]} = \{HZ\+\_\+293, HZ\+\_\+329, HZ\+\_\+261, HZ\+\_\+130, HZ\+\_\+196, SILENCE\+\_\+1S, SILENCE\+\_\+1S, SILENCE\+\_\+1S, SILENCE\+\_\+1S\}
+\begin{DoxyCompactList}\small\item\em Holds notes to be played. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+main file for the RR Scheduler running Task-\/1 and Task-\/2 of Lab-\/3 
+
+\begin{DoxyAuthor}{Author}
+Sourav Jena, Yi Chen 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/05-\/28 
+\end{DoxyDate}

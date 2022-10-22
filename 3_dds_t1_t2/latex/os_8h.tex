@@ -1,0 +1,143 @@
+\hypertarget{os_8h}{}\doxysection{os.\+h File Reference}
+\label{os_8h}\index{os.h@{os.h}}
+
+
+Function prototypes, global variables and macros for DDS Scheduler.  
+
+
+{\ttfamily \#include \char`\"{}Arduino.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTCBstruct}{TCBstruct}}
+\begin{DoxyCompactList}\small\item\em Task Control Block structure to store a Task\textquotesingle{}s information relevant to the scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{os_8h_a43bafb28b29491ec7f871319b5a3b2f8}\label{os_8h_a43bafb28b29491ec7f871319b5a3b2f8}} 
+\#define {\bfseries F\+\_\+\+CPU}~16000000\+UL
+\item 
+\mbox{\Hypertarget{os_8h_ada6bcbd5d0953c77599855f58861c27b}\label{os_8h_ada6bcbd5d0953c77599855f58861c27b}} 
+\#define {\bfseries NUMBER\+\_\+\+OF\+\_\+\+TASKS}~10
+\item 
+\mbox{\Hypertarget{os_8h_ad1235d5ce36f7267285e82dccd428aa6}\label{os_8h_ad1235d5ce36f7267285e82dccd428aa6}} 
+\#define {\bfseries READY}~0
+\item 
+\mbox{\Hypertarget{os_8h_a6fb7181d994ee98e735494be55809708}\label{os_8h_a6fb7181d994ee98e735494be55809708}} 
+\#define {\bfseries RUNNING}~1
+\item 
+\mbox{\Hypertarget{os_8h_a4b221cbe3abc6fdb3f34a11d55540f4f}\label{os_8h_a4b221cbe3abc6fdb3f34a11d55540f4f}} 
+\#define {\bfseries SLEEPING}~2
+\item 
+\mbox{\Hypertarget{os_8h_a9960d0d5ae92fc92c70bbb84c2a5c0cc}\label{os_8h_a9960d0d5ae92fc92c70bbb84c2a5c0cc}} 
+\#define {\bfseries PENDING}~0
+\item 
+\mbox{\Hypertarget{os_8h_abe6b865c045f3e7c6892ef4f15ff5779}\label{os_8h_abe6b865c045f3e7c6892ef4f15ff5779}} 
+\#define {\bfseries DONE}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{os_8h_a7cfcbe42bd266750aeb6e5d71e5ea479}{ISR}} (TIMER2\+\_\+\+OVF\+\_\+vect)
+\begin{DoxyCompactList}\small\item\em Interrupt Service Routine for Timer-\/2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8h_a793243131aeeb9ec291468b450153afc}\label{os_8h_a793243131aeeb9ec291468b450153afc}} 
+void {\bfseries init\+\_\+timer2} (void)
+\begin{DoxyCompactList}\small\item\em Configure Timer-\/2 to fire ISR every 2 ms. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8h_a6cc2e63d83267ff5059bf0a76b302a09}\label{os_8h_a6cc2e63d83267ff5059bf0a76b302a09}} 
+void {\bfseries os\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes Timer-\/2 and add Tasks for the scheduler to manage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{os_8h_a64ca823d60335b83f74cc28378018058}{os\+\_\+start\+\_\+task}} (void($\ast$ptr\+\_\+fn)())
+\begin{DoxyCompactList}\small\item\em Starts a task. Runs the task on the scheduler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{os_8h_ab93fff6139a40309204c3f4d9a05385f}{os\+\_\+delay}} (int32\+\_\+t delay\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Non-\/blocking delay. Changes the state of a running task to sleeping. Allows the scheduler to run other tasks when the current task is sleeping. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8h_ad89e53bc232b85604368e45d2469784f}\label{os_8h_ad89e53bc232b85604368e45d2469784f}} 
+void {\bfseries os\+\_\+scheduler\+\_\+sync} (void)
+\begin{DoxyCompactList}\small\item\em Puts the scheduler in the IDLE state, till 2 ms has not elasped so that tasks and synced and runs periodically. Decrements sleep time remaining for each task by 2 ms. Changes the state of a SLEEPING task to READY when it sleep time remaining for that task reaches 0. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8h_a3fc86ed91990cc04813ff7823fb4ffcd}\label{os_8h_a3fc86ed91990cc04813ff7823fb4ffcd}} 
+void {\bfseries os\+\_\+scheduler} (void)
+\begin{DoxyCompactList}\small\item\em Scheduler code. Iterates over all the tasks in os\+\_\+task array and runs the tasks that have RUNNING as their state. Changes state of a READY task to RUNNING. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{os_8h_aa21f32a38ebe8b3bf249f4b46372e4fa}\label{os_8h_aa21f32a38ebe8b3bf249f4b46372e4fa}} 
+\mbox{\hyperlink{structTCBstruct}{TCBstruct}} {\bfseries os\+\_\+task} \mbox{[}10\mbox{]}
+\item 
+\mbox{\Hypertarget{os_8h_adac4731e32f370696ae41deaf61550b9}\label{os_8h_adac4731e32f370696ae41deaf61550b9}} 
+\mbox{\hyperlink{structTCBstruct}{TCBstruct}} {\bfseries os\+\_\+dead\+\_\+task} \mbox{[}10\mbox{]}
+\item 
+\mbox{\Hypertarget{os_8h_a1a6a83370c81dbf9da1ef7043d0609a7}\label{os_8h_a1a6a83370c81dbf9da1ef7043d0609a7}} 
+volatile uint8\+\_\+t {\bfseries os\+\_\+s\+Flag}
+\item 
+\mbox{\Hypertarget{os_8h_af67aab507a504eb1ede7ce8cd88197ed}\label{os_8h_af67aab507a504eb1ede7ce8cd88197ed}} 
+volatile uint32\+\_\+t {\bfseries os\+\_\+ticks}
+\item 
+\mbox{\Hypertarget{os_8h_ac2c2023183e2d4064ff10786b5c212d5}\label{os_8h_ac2c2023183e2d4064ff10786b5c212d5}} 
+volatile uint8\+\_\+t {\bfseries os\+\_\+task\+\_\+index}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function prototypes, global variables and macros for DDS Scheduler. 
+
+\begin{DoxyAuthor}{Author}
+Sourav Jena, Yi Chen 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/05-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{os_8h_a7cfcbe42bd266750aeb6e5d71e5ea479}\label{os_8h_a7cfcbe42bd266750aeb6e5d71e5ea479}} 
+\index{os.h@{os.h}!ISR@{ISR}}
+\index{ISR@{ISR}!os.h@{os.h}}
+\doxysubsubsection{\texorpdfstring{ISR()}{ISR()}}
+{\footnotesize\ttfamily ISR (\begin{DoxyParamCaption}\item[{TIMER2\+\_\+\+OVF\+\_\+vect}]{ }\end{DoxyParamCaption})}
+
+
+
+Interrupt Service Routine for Timer-\/2. 
+
+
+\begin{DoxyEnumerate}
+\item Fires every 2 ms.
+\item Changes os\+\_\+s\+Flag from PENDING to DONE.
+\item Increments os\+\_\+ticks. 
+\end{DoxyEnumerate}\mbox{\Hypertarget{os_8h_ab93fff6139a40309204c3f4d9a05385f}\label{os_8h_ab93fff6139a40309204c3f4d9a05385f}} 
+\index{os.h@{os.h}!os\_delay@{os\_delay}}
+\index{os\_delay@{os\_delay}!os.h@{os.h}}
+\doxysubsubsection{\texorpdfstring{os\_delay()}{os\_delay()}}
+{\footnotesize\ttfamily void os\+\_\+delay (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{delay\+\_\+ms }\end{DoxyParamCaption})}
+
+
+
+Non-\/blocking delay. Changes the state of a running task to sleeping. Allows the scheduler to run other tasks when the current task is sleeping. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay\+\_\+ms} & Time in ms the task needs to sleep \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{os_8h_a64ca823d60335b83f74cc28378018058}\label{os_8h_a64ca823d60335b83f74cc28378018058}} 
+\index{os.h@{os.h}!os\_start\_task@{os\_start\_task}}
+\index{os\_start\_task@{os\_start\_task}!os.h@{os.h}}
+\doxysubsubsection{\texorpdfstring{os\_start\_task()}{os\_start\_task()}}
+{\footnotesize\ttfamily void os\+\_\+start\+\_\+task (\begin{DoxyParamCaption}\item[{void($\ast$)()}]{ptr\+\_\+fn }\end{DoxyParamCaption})}
+
+
+
+Starts a task. Runs the task on the scheduler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr\+\_\+fn} & Function pointer pointing to the Task. \\
+\hline
+\end{DoxyParams}

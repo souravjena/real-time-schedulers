@@ -1,0 +1,105 @@
+\hypertarget{os_8cpp}{}\doxysection{os.\+cpp File Reference}
+\label{os_8cpp}\index{os.cpp@{os.cpp}}
+
+
+SRRI Scheduler driver code.  
+
+
+{\ttfamily \#include \char`\"{}Arduino.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}os.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task3.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{os_8cpp_aee8e07be306352898c552d27b9494317}\label{os_8cpp_aee8e07be306352898c552d27b9494317}} 
+void {\bfseries init\+\_\+timer2} ()
+\begin{DoxyCompactList}\small\item\em Configure Timer-\/2 to fire ISR every 2 ms. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8cpp_a6cc2e63d83267ff5059bf0a76b302a09}\label{os_8cpp_a6cc2e63d83267ff5059bf0a76b302a09}} 
+void {\bfseries os\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes Timer-\/2 and add Tasks for the scheduler to manage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{os_8cpp_a64ca823d60335b83f74cc28378018058}{os\+\_\+start\+\_\+task}} (void($\ast$ptr\+\_\+fn)())
+\begin{DoxyCompactList}\small\item\em Starts a task. Runs the task on the scheduler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{os_8cpp_ab1dcb96426cc0b7e05e92e2dd1e05373}{os\+\_\+delay}} (int32\+\_\+t t\+\_\+sleep)
+\begin{DoxyCompactList}\small\item\em Non-\/blocking delay. Changes the state of a running task to sleeping. Allows the scheduler to run other tasks when the current task is sleeping. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8cpp_ad89e53bc232b85604368e45d2469784f}\label{os_8cpp_ad89e53bc232b85604368e45d2469784f}} 
+void {\bfseries os\+\_\+scheduler\+\_\+sync} (void)
+\begin{DoxyCompactList}\small\item\em Puts the scheduler in the IDLE state, till 2 ms has not elasped so that tasks and synced and runs periodically. Decrements sleep time remaining for each task by 2 ms. Changes the state of a SLEEPING task to READY when it sleep time remaining for that task reaches 0. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8cpp_a3fc86ed91990cc04813ff7823fb4ffcd}\label{os_8cpp_a3fc86ed91990cc04813ff7823fb4ffcd}} 
+void {\bfseries os\+\_\+scheduler} (void)
+\begin{DoxyCompactList}\small\item\em Scheduler code. Iterates over all the tasks in os\+\_\+task array and runs the tasks that have RUNNING as their state. Changes state of a READY task to RUNNING. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8cpp_a7cfcbe42bd266750aeb6e5d71e5ea479}\label{os_8cpp_a7cfcbe42bd266750aeb6e5d71e5ea479}} 
+{\bfseries ISR} (TIMER2\+\_\+\+OVF\+\_\+vect)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{os_8cpp_a1a6a83370c81dbf9da1ef7043d0609a7}\label{os_8cpp_a1a6a83370c81dbf9da1ef7043d0609a7}} 
+volatile uint8\+\_\+t {\bfseries os\+\_\+s\+Flag} = PENDING
+\begin{DoxyCompactList}\small\item\em Stores scheduler\textquotesingle{}s Flag (DONE, PENDING) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8cpp_af67aab507a504eb1ede7ce8cd88197ed}\label{os_8cpp_af67aab507a504eb1ede7ce8cd88197ed}} 
+volatile uint32\+\_\+t {\bfseries os\+\_\+ticks} = 0
+\begin{DoxyCompactList}\small\item\em Holds number of ms elasped since the start of Timer-\/2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8cpp_a28a16e3ef2647ffebc385a3b15bdf4a7}\label{os_8cpp_a28a16e3ef2647ffebc385a3b15bdf4a7}} 
+uint8\+\_\+t {\bfseries os\+\_\+current\+\_\+task\+\_\+index} = 0
+\item 
+\mbox{\Hypertarget{os_8cpp_a007e805f6da4b35c39dbe8fe836088c0}\label{os_8cpp_a007e805f6da4b35c39dbe8fe836088c0}} 
+void($\ast$ {\bfseries arr\+\_\+available\+\_\+tasks} \mbox{[}NUMBER\+\_\+\+OF\+\_\+\+TASKS\mbox{]})(void $\ast$p)
+\item 
+\mbox{\Hypertarget{os_8cpp_a3fca70238a777f7d4b2ea848a10c70a1}\label{os_8cpp_a3fca70238a777f7d4b2ea848a10c70a1}} 
+uint8\+\_\+t {\bfseries arr\+\_\+task\+\_\+state} \mbox{[}NUMBER\+\_\+\+OF\+\_\+\+TASKS\mbox{]} = \{READY, READY, READY, READY, NULL\}
+\begin{DoxyCompactList}\small\item\em Array to hold state of the tasks. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8cpp_aeb7940dc1b6c302a9013e0931d94ae9c}\label{os_8cpp_aeb7940dc1b6c302a9013e0931d94ae9c}} 
+uint8\+\_\+t {\bfseries arr\+\_\+task\+\_\+sleep\+\_\+start\+\_\+flag} \mbox{[}NUMBER\+\_\+\+OF\+\_\+\+TASKS\mbox{]} = \{0, 0, 0, 0, 0, 0, 0, 0, 0, 0\}
+\begin{DoxyCompactList}\small\item\em Array to hold sleep start flag of the tasks. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{os_8cpp_a1dcc11cf0725258c3af40a63a7d91bb5}\label{os_8cpp_a1dcc11cf0725258c3af40a63a7d91bb5}} 
+int32\+\_\+t {\bfseries arr\+\_\+task\+\_\+sleep\+\_\+remaining} \mbox{[}NUMBER\+\_\+\+OF\+\_\+\+TASKS\mbox{]} = \{0, 0, 0, 0, 0, 0, 0, 0, 0, 0\}
+\begin{DoxyCompactList}\small\item\em Array to hold sleep time remaining for the tasks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SRRI Scheduler driver code. 
+
+\begin{DoxyAuthor}{Author}
+Sourav Jena, Yi Chen 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/05-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{os_8cpp_ab1dcb96426cc0b7e05e92e2dd1e05373}\label{os_8cpp_ab1dcb96426cc0b7e05e92e2dd1e05373}} 
+\index{os.cpp@{os.cpp}!os\_delay@{os\_delay}}
+\index{os\_delay@{os\_delay}!os.cpp@{os.cpp}}
+\doxysubsubsection{\texorpdfstring{os\_delay()}{os\_delay()}}
+{\footnotesize\ttfamily void os\+\_\+delay (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{delay\+\_\+ms }\end{DoxyParamCaption})}
+
+
+
+Non-\/blocking delay. Changes the state of a running task to sleeping. Allows the scheduler to run other tasks when the current task is sleeping. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay\+\_\+ms} & Time in ms the task needs to sleep \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{os_8cpp_a64ca823d60335b83f74cc28378018058}\label{os_8cpp_a64ca823d60335b83f74cc28378018058}} 
+\index{os.cpp@{os.cpp}!os\_start\_task@{os\_start\_task}}
+\index{os\_start\_task@{os\_start\_task}!os.cpp@{os.cpp}}
+\doxysubsubsection{\texorpdfstring{os\_start\_task()}{os\_start\_task()}}
+{\footnotesize\ttfamily void os\+\_\+start\+\_\+task (\begin{DoxyParamCaption}\item[{void($\ast$)()}]{ptr\+\_\+fn }\end{DoxyParamCaption})}
+
+
+
+Starts a task. Runs the task on the scheduler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr\+\_\+fn} & Function pointer pointing to the Task. \\
+\hline
+\end{DoxyParams}

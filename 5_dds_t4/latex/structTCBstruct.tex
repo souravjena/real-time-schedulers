@@ -1,0 +1,43 @@
+\hypertarget{structTCBstruct}{}\doxysection{TCBstruct Struct Reference}
+\label{structTCBstruct}\index{TCBstruct@{TCBstruct}}
+
+
+Task Control Block structure to store a Task\textquotesingle{}s information relevant to the scheduler.  
+
+
+
+
+{\ttfamily \#include $<$os.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structTCBstruct_a8bdb89283a2f75b654df8637fc45c663}\label{structTCBstruct_a8bdb89283a2f75b654df8637fc45c663}} 
+void($\ast$ {\bfseries ptr\+\_\+func} )(void $\ast$p)
+\item 
+\mbox{\Hypertarget{structTCBstruct_a39590e760e57b6576833dc2e52856c76}\label{structTCBstruct_a39590e760e57b6576833dc2e52856c76}} 
+uint8\+\_\+t {\bfseries state}
+\item 
+\mbox{\Hypertarget{structTCBstruct_a1f181a05ed68b3737b6b3b84c89a6011}\label{structTCBstruct_a1f181a05ed68b3737b6b3b84c89a6011}} 
+int32\+\_\+t {\bfseries sleep\+\_\+remaining}
+\item 
+\mbox{\Hypertarget{structTCBstruct_a621d3eb7bbbb3891e751f8a85a5e4a6b}\label{structTCBstruct_a621d3eb7bbbb3891e751f8a85a5e4a6b}} 
+uint8\+\_\+t {\bfseries flag\+\_\+start\+\_\+sleep}
+\item 
+\mbox{\Hypertarget{structTCBstruct_ae04aee3462aabc6ae0be6c8216555f28}\label{structTCBstruct_ae04aee3462aabc6ae0be6c8216555f28}} 
+uint8\+\_\+t {\bfseries unique\+\_\+id}
+\item 
+\mbox{\Hypertarget{structTCBstruct_ac5921986295cb504ab948320e4eafb21}\label{structTCBstruct_ac5921986295cb504ab948320e4eafb21}} 
+String {\bfseries str\+\_\+name}
+\item 
+\mbox{\Hypertarget{structTCBstruct_a633e2c94e8060899ca3e7f5b7ef7f5f7}\label{structTCBstruct_a633e2c94e8060899ca3e7f5b7ef7f5f7}} 
+uint32\+\_\+t {\bfseries count\+\_\+restart}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Task Control Block structure to store a Task\textquotesingle{}s information relevant to the scheduler. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{os_8h}{os.\+h}}\end{DoxyCompactItemize}

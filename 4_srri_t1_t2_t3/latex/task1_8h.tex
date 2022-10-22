@@ -1,0 +1,50 @@
+\hypertarget{task1_8h}{}\doxysection{task1.\+h File Reference}
+\label{task1_8h}\index{task1.h@{task1.h}}
+
+
+Function prototypes and macros for Task1.  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}os.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{task1_8h_ab5e66c714c5c4fc72bebb6aee3da7be7}\label{task1_8h_ab5e66c714c5c4fc72bebb6aee3da7be7}} 
+\#define {\bfseries DDR\+\_\+\+LED}~DDRL
+\item 
+\mbox{\Hypertarget{task1_8h_ad749b15dc3958f6b4a88a969e2a2ca9d}\label{task1_8h_ad749b15dc3958f6b4a88a969e2a2ca9d}} 
+\#define {\bfseries PORT\+\_\+\+LED}~PORTL
+\item 
+\mbox{\Hypertarget{task1_8h_ab9824ab080c30006c1baaa0dd7e863c5}\label{task1_8h_ab9824ab080c30006c1baaa0dd7e863c5}} 
+\#define {\bfseries LED\+\_\+\+RED\+\_\+\+PIN}~PL0
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{task1_8h_a92c630305f104856f174068894754b1e}\label{task1_8h_a92c630305f104856f174068894754b1e}} 
+void {\bfseries init\+\_\+task1} ()
+\begin{DoxyCompactList}\small\item\em Initializes LED GPIO Pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{task1_8h_aa08e5b078986d56dfbad555f2fa6fd57}\label{task1_8h_aa08e5b078986d56dfbad555f2fa6fd57}} 
+void {\bfseries led\+\_\+red\+\_\+on} ()
+\begin{DoxyCompactList}\small\item\em Turns ON the LED. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{task1_8h_ad6f6083af3526114311748a49640254f}\label{task1_8h_ad6f6083af3526114311748a49640254f}} 
+void {\bfseries led\+\_\+red\+\_\+off} ()
+\begin{DoxyCompactList}\small\item\em Turn OFF the LED. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{task1_8h_ab55078d807df0a75af8a2fa8eefdcc41}\label{task1_8h_ab55078d807df0a75af8a2fa8eefdcc41}} 
+void {\bfseries task1} (void)
+\begin{DoxyCompactList}\small\item\em Task to turn on the LED for 250 ms and off for 750 ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function prototypes and macros for Task1. 
+
+\begin{DoxyAuthor}{Author}
+Sourav Jena, Yi Chen 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/05-\/28 
+\end{DoxyDate}

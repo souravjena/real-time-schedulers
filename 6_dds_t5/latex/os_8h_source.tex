@@ -1,0 +1,84 @@
+\hypertarget{os_8h_source}{}\doxysection{os.\+h}
+\mbox{\hyperlink{os_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef OS\_H}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define OS\_H}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}          \textcolor{comment}{// To use Arduino macros and functions}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <stdio.h>}            \textcolor{comment}{// For NULL}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <avr/io.h>}           \textcolor{comment}{// Standard AVR IO Library}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <util/delay.h>}       \textcolor{comment}{// Standard AVR Delay Library}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <stdint.h>}           \textcolor{comment}{// For standard data types}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <avr/interrupt.h>}    \textcolor{comment}{// Standard AVR Interrupt Library}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define NUMBER\_OF\_TASKS     10}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define READY     0}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define RUNNING   1}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define SLEEPING  2}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define DEAD      3}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define PENDING   0}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define DONE      1}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 }
+\DoxyCodeLine{36 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structTCBstruct}{TCBstruct}} \{}
+\DoxyCodeLine{37     void (*ptr\_func)(\textcolor{keywordtype}{void} *p);    \textcolor{comment}{// the function pointer}}
+\DoxyCodeLine{38     uint8\_t state;                \textcolor{comment}{// stores the state of the task}}
+\DoxyCodeLine{39     int32\_t sleep\_remaining;      \textcolor{comment}{// stores sleep time remaining}}
+\DoxyCodeLine{40     uint8\_t flag\_start\_sleep;     \textcolor{comment}{// stores if the task has started its sleep}}
+\DoxyCodeLine{41     }
+\DoxyCodeLine{42     uint8\_t unique\_id;            \textcolor{comment}{// stores unique id of the task}}
+\DoxyCodeLine{43     String  str\_name;             \textcolor{comment}{// stores name given to the task}}
+\DoxyCodeLine{44     uint32\_t count\_restart;       \textcolor{comment}{// stores number of times the task has been restarted by the scheduler}}
+\DoxyCodeLine{45     }
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{extern} \mbox{\hyperlink{structTCBstruct}{TCBstruct}} os\_task[10];           \textcolor{comment}{// TCBstruct array to hold information about max 10 ALIVE tasks.}}
+\DoxyCodeLine{49 \textcolor{keyword}{extern} \mbox{\hyperlink{structTCBstruct}{TCBstruct}} os\_dead\_task[10];      \textcolor{comment}{// TCBstruct array to hold information about max 10 DEAD tasks.}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} uint8\_t  os\_sFlag;      \textcolor{comment}{// Stores scheduler's Flag (DONE, PENDING)}}
+\DoxyCodeLine{52 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} uint32\_t os\_ticks;      \textcolor{comment}{// Holds number of ms elasped since the start of Timer-\/2}}
+\DoxyCodeLine{53 \textcolor{keyword}{extern} \textcolor{keyword}{volatile} uint8\_t  os\_task\_index; \textcolor{comment}{// Holds the index of current task running by the scheduler}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 }
+\DoxyCodeLine{63 \mbox{\hyperlink{os_8h_a7cfcbe42bd266750aeb6e5d71e5ea479}{ISR}}(TIMER2\_OVF\_vect);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{70 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a793243131aeeb9ec291468b450153afc}{init\_timer2}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{76 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a6cc2e63d83267ff5059bf0a76b302a09}{os\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 }
+\DoxyCodeLine{86 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_aff196698c917194f916bce891c3f01ca}{os\_add\_task}}(\textcolor{keywordtype}{void} (*ptr\_fn)(), uint8\_t unique\_id, String  str\_name);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 }
+\DoxyCodeLine{94 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a4074f4edb4c4e174a6bfa82b66d2942d}{os\_remove\_task}}(uint8\_t target\_id);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 }
+\DoxyCodeLine{102 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a64ca823d60335b83f74cc28378018058}{os\_start\_task}}(\textcolor{keywordtype}{void} (*ptr\_fn)());}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 }
+\DoxyCodeLine{111 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_ab93fff6139a40309204c3f4d9a05385f}{os\_delay}}(int32\_t delay\_ms);}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 }
+\DoxyCodeLine{122 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_ad89e53bc232b85604368e45d2469784f}{os\_scheduler\_sync}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124 }
+\DoxyCodeLine{129 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a6fa1bd897970c397a75e419b075aba71}{os\_task\_self\_quit}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 }
+\DoxyCodeLine{137 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a5a751679434c1987d1c5b2a94a5fedf3}{os\_from\_task\_start}}(\mbox{\hyperlink{structTCBstruct}{TCBstruct}}* ptr\_tcb);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 }
+\DoxyCodeLine{145 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a9ce59cec215f42e56b789cab0b74b899}{os\_from\_task\_stop}}(\mbox{\hyperlink{structTCBstruct}{TCBstruct}}* ptr\_dead\_tcb);}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 }
+\DoxyCodeLine{154 \textcolor{keywordtype}{void} \mbox{\hyperlink{os_8h_a3fc86ed91990cc04813ff7823fb4ffcd}{os\_scheduler}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

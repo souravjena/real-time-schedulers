@@ -1,0 +1,49 @@
+\hypertarget{task2_8h_source}{}\doxysection{task2.\+h}
+\mbox{\hyperlink{task2_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef TASK2\_H}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define TASK2\_H}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <avr/io.h>}            \textcolor{comment}{// Standard AVR IO Library}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{os_8h}{os.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <avr/io.h>}                            \textcolor{comment}{// Standard AVR IO Library}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define DDR\_SPEAKER                 DDRH       }\textcolor{comment}{// DDR of PORTL}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define PORT\_SPEAKER                PORTH      }\textcolor{comment}{// PORTL Register}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define PIN\_SPEAKER                 PH3        }\textcolor{comment}{// Speaker Pin (OC4A -\/> PH3 -\/> Arduino Pin 6)}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define TIMER4\_POWER\_REG            PRR1}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define TIMER4\_CONTROL\_REG\_A        TCCR4A}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define TIMER4\_CONTROL\_REG\_B        TCCR4B}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define TIMER4\_COUNT\_REG            TCNT4}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define TIMER4\_OUTPUT\_COMPARE\_REG   OCR4A}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define BIT\_SET(PORT, BIT)          (PORT |= (1 << BIT))      }\textcolor{comment}{// Macro function for setting one bit}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define BIT\_CLR(PORT, BIT)          (PORT \&= \string~(1 << BIT))     }\textcolor{comment}{// Macro function for clearing one bit}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// 293hz 329hz 261hz 130hz 196hz}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define HZ\_293      107}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define HZ\_329      95}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define HZ\_261      119}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define HZ\_130      481}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define HZ\_196      319}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define HZ\_400      78}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define HZ\_250      125}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define HZ\_800      39}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define SILENCE\_1S  62500}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{extern} uint32\_t arr\_notes[];        \textcolor{comment}{// Array to hold notes of the tune to be played.}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{51 \textcolor{keywordtype}{void} \mbox{\hyperlink{task2_8h_a6a772123799d55fdc541738bcb282204}{init\_task2}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{58 \textcolor{keywordtype}{void} \mbox{\hyperlink{task2_8h_a03bef279de31d91a79b14f31c4530dfc}{task2}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
